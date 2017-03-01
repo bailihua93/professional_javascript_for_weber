@@ -65,6 +65,7 @@ rm delete.txt
 
 ####　远程仓库
 
+ 怎么修改到别的远程的库呢
 1. 创建公私秘钥
 ssh-keygen -t rsa -C "youremail@example.com"
 由于不用于军事目的所以不用设置密码
@@ -80,3 +81,9 @@ git remote add origin git@github.com:bailihua93/responName.git
 git push -u origin master　//git push 本来就是将本地库推送到远程库中，　加上-u　会将远程库和现在的库关联起来
 git push origin master　　以后就可以用这个命令了
 
+
+#### 分支管理
++ 创建一个新的分支并选择
+git checkout -b dev 等价于 git branch dev    git checkout dev
+git branch  //显示目前存在的所有分支
+ 
