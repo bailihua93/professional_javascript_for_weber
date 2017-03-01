@@ -83,7 +83,24 @@ git push origin master　　以后就可以用这个命令了
 
 
 #### 分支管理
-+ 创建一个新的分支并选择
+##### 创建分支并合并
 git checkout -b dev 等价于 git branch dev    git checkout dev
 git branch  //显示目前存在的所有分支
-git checkout branchname   修改当前分支位置
+// 修改文件， add and commit
+git checkout master   修改当前分支位置
+git merge dev   //简单的合并，只是把一个主分支的指针移到了dev的指针罢了
+git branch -d dev  删除那个分支
+
+##### 解决冲突 
+git checkout -b feature1
+<!--修改文件并添加提交后-->
+git add readme.txt
+git commit -m "hello"
+<!--切换到主分支-->
+git checkout master
+<!--在主分支上添加并修改后-->
+git add readme.txt
+git commit -m "$simple "
+
+
+
