@@ -86,4 +86,4 @@ git push origin master　　以后就可以用这个命令了
 + 创建一个新的分支并选择
 git checkout -b dev 等价于 git branch dev    git checkout dev
 git branch  //显示目前存在的所有分支
- 
+git checkout branchname   修改当前分支位置
