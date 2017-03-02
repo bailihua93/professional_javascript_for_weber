@@ -243,3 +243,25 @@ git push origin --tags
 git tag -d v0.
 然后，从远程删除。删除命令也是push，但是格式如下：
 git push origin :refs/tags/v0.9
+
+
+#### 自定义git
+#####忽略特殊文件
+在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+如果你确实想添加该文件，可以用-f强制添加到Git：
+
+$ git add -f App.class
+或者你发现，可能是.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用git check-ignore命令检查：
+
+$ git check-ignore -v App.class
+.gitignore:3:*.class    App.class
+##### 配置别名
+$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+
+最强log  (git lg)
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+##### 搭建服务器
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000
