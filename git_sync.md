@@ -126,3 +126,10 @@ git merge --no-ff -m "merge with no-ff" dev
 
 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 
+##### bug分支
+工作到一半的时候突然来了个　bug 怎么半
+git stash　可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作
+然后返回产生　bug 的主分支
+git checkout master
+git checkout -b bug-fix1
+保存并修改
