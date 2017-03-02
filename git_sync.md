@@ -140,3 +140,10 @@ git branch -d bug-fix1
 git checkout newproject 
 git stash list 显示暂存的东西
 git　stash apply     git stash drop    ===   git stash pop
+##### feature 分支
+添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，
+最后，删除该feature分支。
+git checkout -b feature-vulcan
+开发完毕了
+git add vulcan.py
+git commit -m "add feature vulcan"
