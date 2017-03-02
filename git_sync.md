@@ -204,3 +204,42 @@ git push origin dev
 
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
 
+#### 标签管理
+
+git branch  //显示所有分支并选择要打标签的分支
+git checkout master
+
+git  tag v1.0 当前目录打上标签
+
+忘了当时打标签了：
+git log --pretty=oneline --abbrev-commit   //这个命令行有问题
+
+git tag v0.9 6224937
+
+标签不是按时间顺序列出，而是按字母排序的。可以用git show <tagname>查看标签信息：
+
+还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字：
+git tag -a v0.1 -m "version 0.1 released" 3628164
+
+可以通过-s用私钥签名一个标签：
+git tag -s v0.2 -m "signed version 0.2 released" fec145a
+
+签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：
+
+gpg: signing failed: secret key not available
+error: gpg failed to sign the data
+error: unable to sign the tag
+如果报错，请参考GnuPG帮助文档配置Key。
+
+
+标签打错了可以删除。创建的标签都只存储在本地，不会自动推送到远程
+git tag -d v0.1
+如果要推送某个标签到远程，使用命令git push origin <tagname>：
+git push origin v1.0
+或者，一次性推送全部尚未推送到远程的本地标签：
+git push origin --tags
+
+如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+git tag -d v0.
+然后，从远程删除。删除命令也是push，但是格式如下：
+git push origin :refs/tags/v0.9
