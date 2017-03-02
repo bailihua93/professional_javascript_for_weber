@@ -147,3 +147,9 @@ git checkout -b feature-vulcan
 开发完毕了
 git add vulcan.py
 git commit -m "add feature vulcan"
+返回并合并
+git checkout dev
+git merge --no-ff -m "合并新功能" feature 
+
+如果老板不想要新功能了， 就不要合并了　，
+git branch -D feature-vulcan     强制删除
