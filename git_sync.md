@@ -153,3 +153,54 @@ git merge --no-ff -m "合并新功能" feature
 
 如果老板不想要新功能了， 就不要合并了　，
 git branch -D feature-vulcan     强制删除
+
+##### 多人协作
+git remote　　显示远程的库
+git remote -v 显示完整的库，如果没有推送权限，就看不到push的地址。
+
+git push origin master
+如果要推送其他分支，比如dev，就改成：
+git push origin dev
+
+
++ 哪些分支需要提交
+   - master分支是主分支，因此要时刻与远程同步；
+
+   - dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
+
+   - bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
+
+   - feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
++ 抓取分支
+ clone git@github.com:michaelliao/learngit.git
+ 小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：
+ git checkout -b dev origin/dev
+ 他就可以在dev上继续修改，然后，时不时地把dev分支push到远程：
+ git commit -m "add /usr/bin/env"
+ git push origin dev
+
+ 你的小伙伴比你早提交了一些，这时你push会出错的，
+ 先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：
+
+ 指定本地dev分支与远程origin/dev分支的链接，
+ git branch --set-upstream dev origin/<branch>
+ git pull
+ git pull成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push：
+ git commit -m "merge & fix hello.py"
+ git push origin dev
+
+ + 总结
+ 因此，多人协作的工作模式通常是这样：
+
+首先，可以试图用git push origin branch-name推送自己的修改；
+
+如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+如果合并有冲突，则解决冲突，并在本地提交；
+
+没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+
+如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
+
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
