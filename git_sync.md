@@ -102,5 +102,10 @@ git checkout master
 git add readme.txt
 git commit -m "$simple "
 
+解决冲突
+git merge feature1　//这里会显示冲突
+手动修改文件(不改也行)
+然后　add commit 就自动认为合并了的
 
+git log --graph 　显示合并的路径问题
 
